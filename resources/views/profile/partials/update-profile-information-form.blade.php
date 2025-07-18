@@ -17,16 +17,7 @@
 
     <!-- Profile Display (Non-Editable) -->
     <div id="profileDisplay" class="mt-6 space-y-4">
-        <!-- Profile Picture Display -->
-        <div class="flex items-center space-x-4">
-            <img src="{{ $user->profile_photo_path ? asset('storage/' . $user->profile_photo_path) : 'https://ui-avatars.com/api/?name=' . urlencode($user->name) . '&background=0D8ABC&color=fff' }}" 
-                 alt="Profile Photo" 
-                 class="w-20 h-20 rounded-full object-cover border">
-            <div>
-                <span class="text-sm text-gray-600">Profile Photo</span>
-            </div>
-        </div>
-
+        <!-- Removed profile photo display -->
         <div>
             <p class="text-sm text-gray-500">{{ __('Name') }}</p>
             <p class="text-gray-900">{{ $user->name }}</p>
@@ -65,22 +56,10 @@
     </div>
 
     <!-- Edit Form (Initially Hidden) -->
-    <form id="profileEditForm" method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6 hidden" enctype="multipart/form-data">
+    <form id="profileEditForm" method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6 hidden">
         @csrf
         @method('patch')
-
-        <div class="flex items-center space-x-4">
-            <img id="profilePhotoPreview" src="{{ $user->profile_photo_path ? asset('storage/' . $user->profile_photo_path) : 'https://ui-avatars.com/api/?name=' . urlencode($user->name) . '&background=0D8ABC&color=fff' }}" 
-                 alt="Profile Photo Preview" 
-                 class="w-20 h-20 rounded-full object-cover border">
-            <div>
-                <x-input-label for="profile_photo" :value="__('Change Photo')" />
-                <input id="profile_photo" name="profile_photo" type="file" class="mt-1 block w-full text-sm text-gray-600" accept="image/*" 
-                       onchange="previewImage(this)" />
-                <x-input-error class="mt-2" :messages="$errors->get('profile_photo')" />
-            </div>
-        </div>
-
+        <!-- Removed profile photo upload field -->
         <div>
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />

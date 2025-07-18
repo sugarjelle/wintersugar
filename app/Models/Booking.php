@@ -15,6 +15,8 @@ class Booking extends Model
     'title',
     'description',
     'booking_date',
+    'country',
+    'kpop_group',
 ];
 
     public function user()

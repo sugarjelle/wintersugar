@@ -34,12 +34,7 @@ class ProfileController extends Controller
             $user->email_verified_at = null;
         }
 
-        // Handle profile photo upload
-        if ($request->hasFile('profile_photo')) {
-            $file = $request->file('profile_photo');
-            $path = $file->store('profile-photos', 'public');
-            $user->profile_photo_path = $path;
-        }
+        // Removed profile photo upload logic
 
         $user->save();
 

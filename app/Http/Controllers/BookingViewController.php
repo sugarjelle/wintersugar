@@ -66,4 +66,10 @@ class BookingViewController extends Controller
 
         return redirect()->route('bookings.index')->with('success', 'Booking deleted!');
     }
+
+    public function show(Booking $booking)
+    {
+        if ($booking->user_id !== Auth::id()) abort(403);
+        return view('bookings.show', compact('booking'));
+    }
 }

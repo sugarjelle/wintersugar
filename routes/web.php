@@ -18,7 +18,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [RegisteredUserController::class, 'store'])->name('register.post');
 });
 
-Route::get('/bookings/{booking}', [BookingController::class, 'show'])->name('bookings.show');
+Route::get('/bookings/{booking}', [App\Http\Controllers\BookingViewController::class, 'show'])->name('bookings.show');
 
 // Authenticated routes
 Route::middleware('auth')->group(function () {
